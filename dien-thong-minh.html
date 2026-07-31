@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Điện Thông Minh Smarthome – VietSmart Tech Hà Tĩnh</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --r700:#B91C1C;--r600:#DC2626;--r100:#FEE2E2;--r50:#FFF5F5;
+  --o500:#F97316;--o400:#FB923C;--o100:#FFEDD5;
+  --g400:#F59E0B;--g100:#FEF3C7;
+  --dk:#0F0505;--n900:#1C1917;--n700:#44403C;--n600:#57534E;
+  --n400:#A8A29E;--n200:#E7E5E4;--n100:#F5F5F4;--wh:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--n900);background:var(--n100);line-height:1.7}
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}
+nav{background:rgba(15,5,5,0.97);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:99;border-bottom:1px solid rgba(220,38,38,0.2)}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-ic{width:32px;height:32px;background:linear-gradient(135deg,#DC2626,#F97316);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo-ic svg{width:18px;height:18px;fill:white}
+.logo-txt{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;color:white}
+.logo-txt span{color:#FB923C}
+.btn-home{display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,#DC2626,#F97316);color:white;padding:8px 18px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-home:hover{opacity:.85}
+.btn-home svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.hero{background:linear-gradient(135deg,var(--dk),#451A03,#92400E);padding:48px 5% 40px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.35);color:#FED7AA;padding:4px 14px;border-radius:100px;font-size:12px;font-weight:500;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,4vw,40px);font-weight:700;color:white;margin-bottom:12px;letter-spacing:-.5px}
+.hero p{font-size:15px;color:rgba(255,255,255,.65);max-width:500px;margin:0 auto}
+.filter-bar{padding:24px 5% 0;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.filter-btn{padding:7px 18px;border-radius:100px;border:1px solid var(--n200);background:white;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;color:var(--n700)}
+.filter-btn.active,.filter-btn:hover{background:#DC2626;color:white;border-color:#DC2626}
+.products{padding:32px 5% 60px;max-width:1200px;margin:0 auto}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.prod-card{background:white;border-radius:16px;overflow:hidden;border:1px solid var(--n200);transition:all .25s;display:flex;flex-direction:column;cursor:pointer}
+.prod-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(220,38,38,.1)}
+.prod-img{height:180px;background:linear-gradient(135deg,#451A03,#92400E);display:flex;align-items:center;justify-content:center;position:relative}
+.prod-img-icon{font-size:64px;opacity:.85}
+.prod-badge{position:absolute;top:12px;left:12px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;font-family:'Inter',sans-serif}
+.badge-hot{background:#DC2626;color:white}
+.badge-new{background:#F97316;color:white}
+.badge-sale{background:#F59E0B;color:white}
+.prod-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.prod-brand{font-size:11px;font-weight:600;color:#DC2626;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.prod-name{font-size:15px;font-weight:700;color:var(--n900);margin-bottom:6px;font-family:'Plus Jakarta Sans',sans-serif}
+.prod-desc{font-size:13px;color:var(--n600);line-height:1.6;margin-bottom:12px}
+.prod-specs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;flex:1;align-content:flex-start}
+.spec{background:#F1F5F9;color:#475569;padding:2px 8px;border-radius:5px;font-size:10.5px;font-weight:500}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--n200);margin-top:auto;gap:8px}
+.prod-price{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#DC2626}
+.prod-price span{font-size:11px;font-weight:400;color:#94A3B8;margin-left:2px}
+.btn-contact{background:linear-gradient(135deg,#DC2626,#F97316);color:white;padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-contact:hover{opacity:.85}
+.note-box{background:#FFEDD5;border:1px solid #FB923C;border-radius:12px;padding:16px 20px;margin:0 5% 40px;max-width:1160px;margin-left:auto;margin-right:auto;display:flex;gap:12px;align-items:flex-start}
+.note-box svg{width:20px;height:20px;min-width:20px;stroke:#F97316;fill:none;stroke-width:2;stroke-linecap:round;margin-top:2px}
+.note-box p{font-size:13.5px;color:#92400E;line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dk),#451A03);padding:48px 5%;text-align:center}
+.cta-section h2{font-size:clamp(20px,3vw,30px);color:white;margin-bottom:10px}
+.cta-section p{color:rgba(255,255,255,.6);font-size:14px;margin-bottom:24px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-cta-primary{background:linear-gradient(135deg,#DC2626,#F97316);color:white;padding:12px 28px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-cta-primary:hover{opacity:.85}
+.btn-cta-ghost{background:rgba(255,255,255,.1);color:white;padding:12px 28px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,.2);font-family:'Inter',sans-serif}
+footer{background:#0F0505;color:rgba(255,255,255,.45);padding:20px 5%;text-align:center;font-size:13px}
+footer a{color:#FB923C;text-decoration:none}
+@media(max-width:600px){.products-grid{grid-template-columns:1fr}.prod-img{height:160px}.prod-footer{flex-direction:column;align-items:flex-start;gap:8px}.btn-contact{width:100%;text-align:center;padding:10px;display:block}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-ic"><svg viewBox="0 0 24 24"><path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-2-1.5-4-2.5-5.5C15 8 14 10 12 10c-1.5 0-2-1.5-1.5-3C9 8.5 8 10 8 12a4 4 0 008 0c0-3-1.5-5-4-10z"/></svg></div>
+    <span class="logo-txt">VietSmart<span>Tech</span></span>
+  </a>
+  <a href="/" class="btn-home"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Trang chủ</a>
+</nav>
+<div class="hero">
+  <div class="hero-badge">💡 Điện thông minh</div>
+  <h1>Thiết Bị Nhà Thông Minh<br>Smarthome</h1>
+  <p>Điều khiển toàn bộ ngôi nhà qua điện thoại — đèn, quạt, điều hòa, khóa cửa, cảm biến an toàn</p>
+</div>
+<div class="filter-bar">
+  <button class="filter-btn active">Tất cả</button>
+  <button class="filter-btn">Công tắc</button>
+  <button class="filter-btn">Đèn LED</button>
+  <button class="filter-btn">Khóa cửa</button>
+  <button class="filter-btn">Cảm biến</button>
+</div>
+<div class="products">
+  <div class="products-grid">
+
+    <div class="prod-card" onclick="location.href='/sp-cong-tac-wifi.html'">
+      <div class="prod-img"><div class="prod-img-icon">🔦</div><span class="prod-badge badge-hot">Bán chạy</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Tuya Smart</div>
+        <div class="prod-name">Công tắc Wifi 1-3 nút</div>
+        <div class="prod-desc">Thay thế công tắc thường, điều khiển đèn qua app Smart Life, hẹn giờ tự động.</div>
+        <div class="prod-specs"><span class="spec">Wifi 2.4GHz</span><span class="spec">App Smart Life</span><span class="spec">Hẹn giờ</span></div>
+        <div class="prod-footer"><div class="prod-price">280.000đ <span>/ cái</span></div><a href="/#lien-he" class="btn-contact">Đặt ngay</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-den-led-thong-minh.html'">
+      <div class="prod-img"><div class="prod-img-icon">💡</div><span class="prod-badge badge-new">Mới</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Tuya Smart</div>
+        <div class="prod-name">Đèn LED Thông Minh 16 triệu màu</div>
+        <div class="prod-desc">Bóng đèn E27, đổi 16 triệu màu, điều chỉnh độ sáng, đồng bộ theo nhạc.</div>
+        <div class="prod-specs"><span class="spec">16M màu</span><span class="spec">9W tiết kiệm</span><span class="spec">Âm nhạc</span></div>
+        <div class="prod-footer"><div class="prod-price">220.000đ <span>/ bóng</span></div><a href="/#lien-he" class="btn-contact">Đặt ngay</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-khoa-cua-van-tay.html'">
+      <div class="prod-img"><div class="prod-img-icon">🔐</div><span class="prod-badge badge-hot">Bán chạy</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Ezviz</div>
+        <div class="prod-name">Khóa cửa vân tay + mã số</div>
+        <div class="prod-desc">Mở bằng vân tay, mã số, thẻ từ hoặc app điện thoại. Lưu 100 vân tay.</div>
+        <div class="prod-specs"><span class="spec">Vân tay</span><span class="spec">Mã số</span><span class="spec">App điều khiển</span></div>
+        <div class="prod-footer"><div class="prod-price">2.800.000đ <span>/ bộ</span></div><a href="/#lien-he" class="btn-contact">Đặt ngay</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-cam-bien-khoi.html'">
+      <div class="prod-img"><div class="prod-img-icon">🌡️</div><span class="prod-badge badge-new">Mới</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Tuya Smart</div>
+        <div class="prod-name">Cảm biến khói + nhiệt độ</div>
+        <div class="prod-desc">Phát hiện khói và nhiệt độ cao, gửi cảnh báo ngay về điện thoại, còi hú 80dB.</div>
+        <div class="prod-specs"><span class="spec">Cảnh báo app</span><span class="spec">Còi 80dB</span><span class="spec">Pin 1 năm</span></div>
+        <div class="prod-footer"><div class="prod-price">380.000đ <span>/ cái</span></div><a href="/#lien-he" class="btn-contact">Đặt ngay</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-goi-smarthome-co-ban.html'">
+      <div class="prod-img"><div class="prod-img-icon">🏠</div><span class="prod-badge badge-sale">Tiết kiệm</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Tuya Smart</div>
+        <div class="prod-name">Gói Smarthome Cơ Bản</div>
+        <div class="prod-desc">Trọn bộ: 4 công tắc wifi + 4 bóng đèn thông minh + 1 ổ cắm wifi + lắp đặt.</div>
+        <div class="prod-specs"><span class="spec">Trọn gói</span><span class="spec">Lắp đặt kèm</span><span class="spec">Tiết kiệm 15%</span></div>
+        <div class="prod-footer"><div class="prod-price">2.200.000đ <span>/ bộ</span></div><a href="/#lien-he" class="btn-contact">Đặt ngay</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="note-box">
+  <svg viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+  <p>Giá trên chưa bao gồm công lắp đặt. Liên hệ để được khảo sát thực tế và tư vấn gói smarthome phù hợp với ngôi nhà của bạn. Bảo hành thiết bị <strong>12 tháng</strong>.</p>
+</div>
+<div class="cta-section">
+  <h2>Muốn ngôi nhà thông minh hơn?</h2>
+  <p>Tư vấn miễn phí — thiết kế hệ thống phù hợp ngân sách — lắp đặt tận nơi</p>
+  <div class="cta-btns">
+    <a href="tel:0xxxxxxxxx" class="btn-cta-primary">📞 Gọi ngay: 0xx xxx xxxx</a>
+    <a href="/#lien-he" class="btn-cta-ghost">Đặt lịch tư vấn</a>
+  </div>
+</div>
+<footer>© 2025 <a href="/">VietSmart Tech</a> — Camera & Điện Thông Minh Hà Tĩnh</footer>
+</body>
+</html>
