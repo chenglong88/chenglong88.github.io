@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hệ thống Điện Mặt Trời Hòa Lưới 5kWp – VietSmart Tech Hà Tĩnh</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --r600:#DC2626;--r100:#FEE2E2;--r50:#FFF5F5;
+  --o500:#F97316;--o400:#FB923C;
+  --n900:#0F172A;--n700:#334155;--n600:#475569;--n500:#64748B;
+  --n400:#94A3B8;--n200:#E2E8F0;--n100:#F1F5F9;--wh:#fff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--n900);background:var(--n100);-webkit-font-smoothing:antialiased;line-height:1.7}
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}
+
+nav{background:rgba(15,5,5,.97);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:99;border-bottom:1px solid rgba(220,38,38,.2)}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-ic{width:32px;height:32px;background:linear-gradient(135deg,#DC2626,#F97316);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo-ic svg{width:18px;height:18px;fill:white}
+.logo-txt{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:white;letter-spacing:-.3px}
+.logo-txt span{color:#FB923C}
+.btn-back{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);color:white;padding:7px 14px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:500;border:1px solid rgba(255,255,255,.15);transition:background .2s;white-space:nowrap}
+.btn-back:hover{background:rgba(255,255,255,.15)}
+.btn-back svg{width:14px;height:14px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+.breadcrumb{padding:12px 5%;display:flex;align-items:center;gap:5px;font-size:12px;color:var(--n400);border-bottom:1px solid var(--n200);background:white;flex-wrap:wrap}
+.breadcrumb a{color:var(--n600);text-decoration:none}
+.breadcrumb a:hover{color:var(--r600)}
+.breadcrumb svg{width:11px;height:11px;stroke:var(--n400);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
+
+/* LAYOUT */
+.product-wrap{max-width:1100px;margin:0 auto;padding:28px 5% 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+/* IMAGE SLIDER */
+.img-slider{border-radius:14px;overflow:hidden;background:white;border:1px solid var(--n200);user-select:none}
+.img-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1)}
+.img-slide{min-width:100%;aspect-ratio:4/3;position:relative;overflow:hidden;background:#1A0808}
+.img-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;padding:20px;text-align:center}
+.img-placeholder svg{width:44px;height:44px;stroke:rgba(255,255,255,.3);fill:none;stroke-width:1.5}
+.img-placeholder .ph-label{font-size:13px;color:rgba(255,255,255,.45)}
+.img-placeholder .ph-hint{font-size:11px;color:rgba(255,255,255,.2)}
+.img-dots{display:flex;justify-content:center;gap:6px;padding:10px 0 8px;background:white}
+.img-dot{width:7px;height:7px;border-radius:50%;background:var(--n200);border:none;cursor:pointer;padding:0;transition:all .25s}
+.img-dot.active{width:22px;border-radius:4px;background:var(--r600)}
+.img-thumbs{display:flex;gap:8px;padding:0 12px 12px;background:white;overflow-x:auto}
+.img-thumb{width:60px;height:45px;border-radius:7px;overflow:hidden;border:2px solid var(--n200);cursor:pointer;transition:border .2s;flex-shrink:0;background:#1A0808;display:flex;align-items:center;justify-content:center}
+.img-thumb.active{border-color:var(--r600)}
+.img-thumb img{width:100%;height:100%;object-fit:cover}
+.img-thumb svg{width:18px;height:18px;stroke:rgba(255,255,255,.35);fill:none;stroke-width:1.5}
+
+/* PRODUCT INFO */
+.prod-brand-badge{display:inline-block;background:var(--r50);color:var(--r600);font-size:10px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 10px;border-radius:5px;margin-bottom:8px}
+.prod-title{font-size:clamp(18px,2.5vw,26px);font-weight:800;color:var(--n900);margin-bottom:7px;letter-spacing:-.5px;line-height:1.2}
+.prod-subtitle{font-size:13.5px;color:var(--n600);margin-bottom:14px;line-height:1.65}
+.prod-rating{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.stars{color:#F59E0B;font-size:13px;letter-spacing:1px}
+.rating-txt{font-size:12px;color:var(--n600)}
+
+.price-box{background:var(--r50);border:1px solid var(--r100);border-radius:12px;padding:14px 16px;margin-bottom:18px}
+.price-label{font-size:10px;color:var(--n400);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px}
+.price-main{font-family:'Plus Jakarta Sans',sans-serif;font-size:26px;font-weight:800;color:var(--r600);line-height:1}
+.price-unit{font-size:12px;color:var(--n400);font-weight:400;margin-left:3px}
+.price-note{font-size:11.5px;color:var(--n600);margin-top:5px;line-height:1.5}
+
+.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:18px}
+.spec-item{background:white;border:1px solid var(--n200);border-radius:8px;padding:9px 11px}
+.spec-label{font-size:9.5px;color:var(--n400);text-transform:uppercase;letter-spacing:.8px;margin-bottom:2px}
+.spec-value{font-size:12.5px;font-weight:600;color:var(--n900)}
+
+.cta-wrap{display:flex;gap:10px;margin-bottom:16px}
+.btn-order{flex:1;padding:12px 16px;border-radius:10px;font-size:13.5px;font-weight:700;background:linear-gradient(135deg,#DC2626,#F97316);color:white;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px}
+.btn-order:hover{opacity:.88}
+.btn-call{flex:1;padding:12px 16px;border-radius:10px;font-size:13.5px;font-weight:600;background:white;color:var(--n900);border:1.5px solid var(--n200);cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:7px}
+.btn-call:hover{border-color:var(--r600);color:var(--r600)}
+.btn-order svg,.btn-call svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+.warranty-row{display:flex;gap:7px;flex-wrap:wrap}
+.w-badge{display:flex;align-items:center;gap:5px;background:white;border:1px solid var(--n200);border-radius:7px;padding:6px 10px;font-size:11.5px;color:var(--n700)}
+.w-badge svg{width:13px;height:13px;stroke:#16A34A;fill:none;stroke-width:2.5;stroke-linecap:round;flex-shrink:0}
+
+/* TABS */
+.desc-section{max-width:1100px;margin:0 auto;padding:0 5% 48px}
+.desc-tabs{display:flex;gap:0;border-bottom:2px solid var(--n200);margin-bottom:20px;overflow-x:auto}
+.desc-tab{padding:11px 18px;font-size:13px;font-weight:600;color:var(--n400);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;font-family:'Inter',sans-serif;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap}
+.desc-tab.active{color:var(--r600);border-bottom-color:var(--r600)}
+.desc-content{background:white;border-radius:14px;padding:24px;border:1px solid var(--n200)}
+.desc-content h3{font-size:15px;font-weight:700;color:var(--n900);margin-bottom:8px;margin-top:18px}
+.desc-content h3:first-child{margin-top:0}
+.desc-content p{font-size:13.5px;color:var(--n600);line-height:1.75;margin-bottom:8px}
+.desc-content ul{padding-left:16px;display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.desc-content ul li{font-size:13.5px;color:var(--n600);line-height:1.6}
+.spec-table{width:100%;border-collapse:collapse;font-size:13px}
+.spec-table tr{border-bottom:1px solid var(--n200)}
+.spec-table tr:last-child{border-bottom:none}
+.spec-table td{padding:9px 12px;vertical-align:top;line-height:1.5}
+.spec-table td:first-child{color:var(--n500);font-weight:500;width:42%;background:var(--n100)}
+
+/* RELATED */
+.related-section{max-width:1100px;margin:0 auto;padding:0 5% 48px}
+.related-section h2{font-size:18px;font-weight:800;color:var(--n900);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.rel-card{background:white;border-radius:12px;overflow:hidden;border:1px solid var(--n200);text-decoration:none;transition:all .2s;display:block}
+.rel-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(15,23,42,.08)}
+.rel-img{height:110px;background:linear-gradient(135deg,#1A0808,#3B0000);display:flex;align-items:center;justify-content:center;font-size:32px}
+.rel-body{padding:10px 12px}
+.rel-name{font-size:12.5px;font-weight:600;color:var(--n900);margin-bottom:3px;font-family:'Plus Jakarta Sans',sans-serif;line-height:1.3}
+.rel-price{font-size:12.5px;font-weight:700;color:var(--r600)}
+
+.back-list{max-width:1100px;margin:0 auto;padding:0 5% 16px}
+.back-list a{display:inline-flex;align-items:center;gap:6px;color:var(--n600);font-size:13px;text-decoration:none;transition:color .2s}
+.back-list a:hover{color:var(--r600)}
+.back-list svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .product-wrap{grid-template-columns:1fr;gap:20px;padding:16px 4% 36px}
+  .desc-section,.related-section,.back-list{padding-left:4%;padding-right:4%}
+  .price-main{font-size:22px}
+  .prod-title{font-size:20px}
+  .cta-wrap{flex-direction:column}
+  .desc-tab{padding:9px 14px;font-size:12px}
+  .related-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:400px){
+  .specs-grid{grid-template-columns:1fr 1fr}
+  .warranty-row{gap:5px}
+  .w-badge{font-size:10.5px;padding:5px 8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-ic"><svg viewBox="0 0 24 24"><path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-2-1.5-4-2.5-5.5C15 8 14 10 12 10c-1.5 0-2-1.5-1.5-3C9 8.5 8 10 8 12a4 4 0 008 0c0-3-1.5-5-4-10z"/></svg></div>
+    <span class="logo-txt">VietSmart<span>Tech</span></span>
+  </a>
+  <a href="/dien-mat-troi.html" class="btn-back">
+    <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Điện mặt trời
+  </a>
+</nav>
+
+<div class="breadcrumb">
+  <a href="/">Trang chủ</a>
+  <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  <a href="/dien-mat-troi.html">Điện mặt trời</a>
+  <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  <span>Hệ thống Điện Mặt Trời Hòa Lưới 5kWp</span>
+</div>
+
+<div class="product-wrap">
+  <div>
+    <div class="img-slider">
+      <div class="img-track" id="imgTrack">
+        <div class="img-slide"><div class="img-placeholder"><svg viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 16M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="ph-label">Ảnh sản phẩm 1</p><p class="ph-hint">800×600px</p></div></div>
+        <div class="img-slide"><div class="img-placeholder"><svg viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 16M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="ph-label">Ảnh sản phẩm 2</p><p class="ph-hint">800×600px</p></div></div>
+        <div class="img-slide"><div class="img-placeholder"><svg viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 16M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><p class="ph-label">Ảnh sản phẩm 3</p><p class="ph-hint">800×600px</p></div></div>
+      </div>
+      <div class="img-dots">
+        <button class="img-dot active" onclick="imgGo(0)"></button>
+        <button class="img-dot" onclick="imgGo(1)"></button>
+        <button class="img-dot" onclick="imgGo(2)"></button>
+      </div>
+    </div>
+    <div class="img-thumbs">
+      <div class="img-thumb active" onclick="imgGo(0)" id="th0"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div>
+      <div class="img-thumb" onclick="imgGo(1)" id="th1"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div>
+      <div class="img-thumb" onclick="imgGo(2)" id="th2"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="prod-brand-badge">LONGi Solar</div>
+    <h1 class="prod-title">Hệ thống Điện Mặt Trời Hòa Lưới 5kWp</h1>
+    <p class="prod-subtitle">Phù hợp gia đình 4-6 người, tiết kiệm 500-600kWh/tháng, hoàn vốn ~4.5 năm — bán điện dư lên lưới.</p>
+    <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-txt">5.0 · Được khách hàng tin tưởng</span></div>
+    <div class="price-box">
+      <div class="price-label">Giá lắp đặt trọn gói</div>
+      <div><span class="price-main">72.000.000đ</span><span class="price-unit">/ hệ thống</span></div>
+      <div class="price-note">Đã bao gồm: tấm pin + inverter + khung + công lắp + đấu nối EVN · Bảo hành 25 năm tấm pin</div>
+    </div>
+    <div class="specs-grid">
+      <div class="spec-item"><div class="spec-label">Công suất</div><div class="spec-value">5kWp</div></div><div class="spec-item"><div class="spec-label">Loại</div><div class="spec-value">Hòa lưới</div></div><div class="spec-item"><div class="spec-label">Sản xuất</div><div class="spec-value">~500kWh/tháng</div></div><div class="spec-item"><div class="spec-label">Hoàn vốn</div><div class="spec-value">~4.5 năm</div></div><div class="spec-item"><div class="spec-label">Tấm pin</div><div class="spec-value">LONGi Hi-MO</div></div><div class="spec-item"><div class="spec-label">Inverter</div><div class="spec-value">Sungrow 5kW</div></div>
+    </div>
+    <div class="cta-wrap">
+      <a href="/#lien-he" class="btn-order">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Đặt lịch lắp đặt
+      </a>
+      <a href="tel:0xxxxxxxxx" class="btn-call">
+        <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        Gọi tư vấn miễn phí
+      </a>
+    </div>
+    <div class="warranty-row">
+      <div class="w-badge"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Bảo hành 25 năm tấm pin</div>
+      <div class="w-badge"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Hàng chính hãng</div>
+      <div class="w-badge"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Lắp đặt trong 24h</div>
+    </div>
+  </div>
+</div>
+
+<div class="desc-section">
+  <div class="desc-tabs">
+    <button class="desc-tab active" onclick="switchTab(this,'tab-desc')">Mô tả sản phẩm</button>
+    <button class="desc-tab" onclick="switchTab(this,'tab-spec')">Thông số kỹ thuật</button>
+    <button class="desc-tab" onclick="switchTab(this,'tab-install')">Hướng dẫn lắp đặt</button>
+  </div>
+  <div class="desc-content" id="tab-desc"><h3>Giới thiệu</h3><p>Hệ thống 5kWp LONGi Solar là lựa chọn tối ưu nhất về hiệu quả đầu tư cho gia đình vừa, sử dụng tấm pin LONGi Hi-MO hiệu suất cao nhất thị trường hiện nay.</p><h3>Lợi ích nổi bật</h3><ul><li>Sản xuất ~500-550kWh/tháng tại Hà Tĩnh</li><li>Tiết kiệm 1.500.000-2.000.000đ/tháng</li><li>Bán điện dư lên lưới EVN — thu thêm thu nhập</li><li>Hoàn vốn ~4.5 năm — tỷ suất lợi nhuận ~22%/năm</li><li>LONGi Hi-MO — Top 3 hiệu suất tấm pin thế giới</li></ul><h3>Phù hợp cho</h3><p>Gia đình 4-6 người, sử dụng 400-700kWh/tháng, mái diện tích 30-35m².</p></div>
+  <div class="desc-content" id="tab-spec" style="display:none"><table class="spec-table"><tr><td>Công suất lắp đặt</td><td>5kWp</td></tr><tr><td>Số tấm pin</td><td>12-14 tấm</td></tr><tr><td>Thương hiệu pin</td><td>LONGi Hi-MO 6</td></tr><tr><td>Inverter</td><td>Sungrow SG5RS</td></tr><tr><td>Sản lượng ước tính</td><td>~500kWh/tháng</td></tr><tr><td>Diện tích mái cần</td><td>30-35m²</td></tr><tr><td>Bảo hành tấm pin</td><td>25 năm hiệu suất</td></tr><tr><td>Bảo hành inverter</td><td>10 năm</td></tr></table></div>
+  <div class="desc-content" id="tab-install" style="display:none"><h3>Quy trình lắp đặt</h3><ul><li><strong>Bước 1:</strong> Khảo sát mái, đánh giá tiềm năng bức xạ mặt trời</li><li><strong>Bước 2:</strong> Thiết kế layout tấm pin tối ưu</li><li><strong>Bước 3:</strong> Lắp hệ thống khung nhôm cao cấp</li><li><strong>Bước 4:</strong> Lắp 12-14 tấm LONGi, đấu nối DC</li><li><strong>Bước 5:</strong> Lắp inverter Sungrow, đấu nối AC và đồng hồ 2 chiều</li><li><strong>Bước 6:</strong> Đăng ký hòa lưới EVN, bàn giao và hướng dẫn app</li></ul></div>
+</div>
+
+<div class="related-section">
+  <h2>Sản phẩm liên quan</h2>
+  <div class="related-grid"><a href="/sp-hoa-luoi-3kwp.html" class="rel-card"><div class="rel-img">☀️</div><div class="rel-body"><div class="rel-name">Hệ thống hòa lưới 3kWp</div><div class="rel-price">45.000.000đ</div></div></a><a href="/sp-hoa-luoi-10kwp.html" class="rel-card"><div class="rel-img">🏭</div><div class="rel-body"><div class="rel-name">Hệ thống hòa lưới 10kWp</div><div class="rel-price">138.000.000đ</div></div></a><a href="/sp-doc-lap-2kwp.html" class="rel-card"><div class="rel-img">🔋</div><div class="rel-body"><div class="rel-name">Hệ thống độc lập 2kWp</div><div class="rel-price">38.000.000đ</div></div></a><a href="/sp-inverter-hybrid-5kw.html" class="rel-card"><div class="rel-img">🌞</div><div class="rel-body"><div class="rel-name">Inverter Hybrid 5kW</div><div class="rel-price">18.500.000đ</div></div></a></div>
+</div>
+
+<div class="back-list">
+  <a href="/dien-mat-troi.html"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Xem tất cả điện mặt trời</a>
+</div>
+
+<script>
+(function(){
+  var track=document.getElementById('imgTrack');
+  var dots=document.querySelectorAll('.img-dot');
+  var thumbs=[document.getElementById('th0'),document.getElementById('th1'),document.getElementById('th2')];
+  var pos=0,total=3,mDown=false,mX=0,mDrag=false,tX=0;
+  function go(n){
+    pos=Math.max(0,Math.min(n,total-1));
+    track.style.transition='transform .45s cubic-bezier(.4,0,.2,1)';
+    track.style.transform='translateX(-'+(pos*100)+'%)';
+    dots.forEach(function(d,i){d.classList.toggle('active',i===pos);});
+    thumbs.forEach(function(t,i){if(t)t.classList.toggle('active',i===pos);});
+  }
+  window.imgGo=go;
+  track.style.cursor='grab';
+  track.addEventListener('mousedown',function(e){mDown=true;mX=e.clientX;mDrag=false;track.style.cursor='grabbing';e.preventDefault();});
+  document.addEventListener('mousemove',function(e){if(!mDown)return;if(Math.abs(e.clientX-mX)>5)mDrag=true;});
+  document.addEventListener('mouseup',function(e){if(!mDown)return;mDown=false;track.style.cursor='grab';if(mDrag){var dx=e.clientX-mX;if(Math.abs(dx)>36)go(pos+(dx<0?1:-1));}});
+  track.addEventListener('touchstart',function(e){tX=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-tX;if(Math.abs(dx)>36)go(pos+(dx<0?1:-1));},{passive:true});
+})();
+function switchTab(btn,id){
+  document.querySelectorAll('.desc-tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.desc-content').forEach(function(c){c.style.display='none';});
+  btn.classList.add('active');
+  document.getElementById(id).style.display='block';
+}
+</script>
+</body>
+</html>
