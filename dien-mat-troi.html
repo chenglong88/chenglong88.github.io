@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Điện Mặt Trời – VietSmart Tech Hà Tĩnh</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--r600:#DC2626;--o500:#F97316;--o400:#FB923C;--o100:#FFEDD5;--g400:#F59E0B;--g100:#FEF3C7;--dk:#0F0505;--n900:#1C1917;--n600:#57534E;--n400:#A8A29E;--n200:#E7E5E4;--n100:#F5F5F4;}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--n900);background:var(--n100);line-height:1.7}
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}
+nav{background:rgba(15,5,5,.97);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:99;border-bottom:1px solid rgba(220,38,38,.2)}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-ic{width:32px;height:32px;background:linear-gradient(135deg,var(--r600),var(--o500));border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo-ic svg{width:18px;height:18px;fill:white}
+.logo-txt{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;color:white}
+.logo-txt span{color:var(--o400)}
+.btn-home{display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--r600),var(--o500));color:white;padding:8px 18px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-home:hover{opacity:.85}
+.btn-home svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.hero{background:linear-gradient(135deg,var(--dk),#78350F,#B45309);padding:48px 5% 40px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.35);color:#FEF3C7;padding:4px 14px;border-radius:100px;font-size:12px;font-weight:500;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,4vw,40px);font-weight:700;color:white;margin-bottom:12px;letter-spacing:-.5px}
+.hero p{font-size:15px;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 20px}
+.sun-stat{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.sun-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;color:#FEF3C7}
+.sun-lbl{font-size:12px;color:rgba(255,255,255,.55)}
+.filter-bar{padding:24px 5% 0;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.filter-btn{padding:7px 18px;border-radius:100px;border:1px solid var(--n200);background:white;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;color:#44403C}
+.filter-btn.active,.filter-btn:hover{background:#D97706;color:white;border-color:#D97706}
+.products{padding:32px 5% 20px;max-width:1200px;margin:0 auto}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.prod-card{background:white;border-radius:16px;overflow:hidden;border:1px solid var(--n200);transition:all .25s;display:flex;flex-direction:column;cursor:pointer}
+.prod-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(217,119,6,.15)}
+.prod-img{height:180px;background:linear-gradient(135deg,#78350F,#B45309);display:flex;align-items:center;justify-content:center;position:relative}
+.prod-img-icon{font-size:64px;opacity:.9}
+.prod-badge{position:absolute;top:12px;left:12px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;font-family:'Inter',sans-serif}
+.badge-hot{background:#DC2626;color:white}
+.badge-new{background:#F97316;color:white}
+.badge-pop{background:#D97706;color:white}
+.prod-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.prod-brand{font-size:11px;font-weight:600;color:#D97706;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.prod-name{font-size:15px;font-weight:700;color:var(--n900);margin-bottom:6px;font-family:'Plus Jakarta Sans',sans-serif}
+.prod-desc{font-size:13px;color:var(--n600);line-height:1.6;margin-bottom:12px}
+.prod-specs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;flex:1;align-content:flex-start}
+.spec{background:#F1F5F9;color:#475569;padding:2px 8px;border-radius:5px;font-size:10.5px;font-weight:500}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--n200);margin-top:auto;gap:8px}
+.prod-price{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#DC2626}
+.prod-price span{font-size:11px;font-weight:400;color:#94A3B8;margin-left:2px}
+.btn-contact{background:linear-gradient(135deg,var(--r600),var(--o500));color:white;padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-contact:hover{opacity:.85}
+.hoan-von{background:white;border-radius:16px;padding:28px;margin:24px 5%;max-width:1160px;margin-left:auto;margin-right:auto;border:2px solid #FEF3C7}
+.hoan-von h3{font-size:18px;font-weight:700;color:#92400E;margin-bottom:16px}
+.hv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+.hv-item{text-align:center;padding:16px;background:#FFFBEB;border-radius:12px}
+.hv-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:700;color:#D97706}
+.hv-lbl{font-size:12px;color:#92400E;margin-top:4px}
+.note-box{background:#FFEDD5;border:1px solid #FB923C;border-radius:12px;padding:16px 20px;margin:0 5% 40px;max-width:1160px;margin-left:auto;margin-right:auto;display:flex;gap:12px;align-items:flex-start}
+.note-box svg{width:20px;height:20px;min-width:20px;stroke:#F97316;fill:none;stroke-width:2;stroke-linecap:round;margin-top:2px}
+.note-box p{font-size:13.5px;color:#92400E;line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dk),#78350F);padding:48px 5%;text-align:center}
+.cta-section h2{font-size:clamp(20px,3vw,30px);color:white;margin-bottom:10px}
+.cta-section p{color:rgba(255,255,255,.6);font-size:14px;margin-bottom:24px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-cta-primary{background:linear-gradient(135deg,var(--r600),var(--o500));color:white;padding:12px 28px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-cta-ghost{background:rgba(255,255,255,.1);color:white;padding:12px 28px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,.2);font-family:'Inter',sans-serif}
+footer{background:#0F0505;color:rgba(255,255,255,.45);padding:20px 5%;text-align:center;font-size:13px}
+footer a{color:#FB923C;text-decoration:none}
+@media(max-width:600px){.products-grid{grid-template-columns:1fr}.prod-img{height:160px}.prod-footer{flex-direction:column;align-items:flex-start;gap:8px}.btn-contact{width:100%;text-align:center;padding:10px;display:block}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo"><div class="logo-ic"><svg viewBox="0 0 24 24"><path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-2-1.5-4-2.5-5.5C15 8 14 10 12 10c-1.5 0-2-1.5-1.5-3C9 8.5 8 10 8 12a4 4 0 008 0c0-3-1.5-5-4-10z"/></svg></div><span class="logo-txt">VietSmart<span>Tech</span></span></a>
+  <a href="/" class="btn-home"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Trang chủ</a>
+</nav>
+<div class="hero">
+  <div class="hero-badge">☀️ Điện mặt trời</div>
+  <h1>Điện Năng Lượng Mặt Trời<br>Tiết Kiệm Bền Vững</h1>
+  <p>Hà Tĩnh có hơn 8 tháng nắng mỗi năm — lắp điện mặt trời là đầu tư sinh lời tốt nhất cho gia đình</p>
+  <div class="sun-stat">
+    <div><div class="sun-num">8+ tháng</div><div class="sun-lbl">Nắng/năm tại HT</div></div>
+    <div><div class="sun-num">4–6 năm</div><div class="sun-lbl">Hoàn vốn</div></div>
+    <div><div class="sun-num">25 năm</div><div class="sun-lbl">Tuổi thọ tấm pin</div></div>
+  </div>
+</div>
+<div class="filter-bar">
+  <button class="filter-btn active">Tất cả</button>
+  <button class="filter-btn">Hòa lưới</button>
+  <button class="filter-btn">Độc lập</button>
+  <button class="filter-btn">Tấm pin</button>
+  <button class="filter-btn">Inverter</button>
+</div>
+<div class="products">
+  <div class="products-grid">
+
+    <div class="prod-card" onclick="location.href='/sp-hoa-luoi-3kwp.html'">
+      <div class="prod-img">
+
+  <img src="/images/sp-hoa-luoi-3kwp.jpg" 
+
+       style="width:100%;height:100%;object-fit:cover">
+
+  <span class="prod-badge badge-hot">Bán chạy</span>
+
+</div>
+      <div class="prod-body">
+        <div class="prod-brand">JA Solar</div>
+        <div class="prod-name">Hệ thống hòa lưới 3kWp</div>
+        <div class="prod-desc">Phù hợp gia đình 3-4 người, tiết kiệm 300-400kWh/tháng, hoàn vốn ~5 năm.</div>
+        <div class="prod-specs"><span class="spec">3kWp</span><span class="spec">Hòa lưới</span><span class="spec">~300kWh/tháng</span></div>
+        <div class="prod-footer"><div class="prod-price">45.000.000đ <span>/ hệ thống</span></div><a href="/#lien-he" class="btn-contact">Tư vấn</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-hoa-luoi-5kwp.html'">
+      <div class="prod-img"><div class="prod-img-icon">⚡</div><span class="prod-badge badge-hot">Bán chạy</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">LONGi Solar</div>
+        <div class="prod-name">Hệ thống hòa lưới 5kWp</div>
+        <div class="prod-desc">Phù hợp gia đình 4-6 người, tiết kiệm 500-600kWh/tháng, hoàn vốn ~4.5 năm.</div>
+        <div class="prod-specs"><span class="spec">5kWp</span><span class="spec">Hòa lưới</span><span class="spec">~500kWh/tháng</span></div>
+        <div class="prod-footer"><div class="prod-price">72.000.000đ <span>/ hệ thống</span></div><a href="/#lien-he" class="btn-contact">Tư vấn</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-hoa-luoi-10kwp.html'">
+      <div class="prod-img"><div class="prod-img-icon">🏭</div><span class="prod-badge badge-new">Mới</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Canadian Solar</div>
+        <div class="prod-name">Hệ thống hòa lưới 10kWp</div>
+        <div class="prod-desc">Phù hợp gia đình lớn hoặc kinh doanh nhỏ, tiết kiệm tối đa hóa đơn điện.</div>
+        <div class="prod-specs"><span class="spec">10kWp</span><span class="spec">Hòa lưới</span><span class="spec">~900kWh/tháng</span></div>
+        <div class="prod-footer"><div class="prod-price">138.000.000đ <span>/ hệ thống</span></div><a href="/#lien-he" class="btn-contact">Tư vấn</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-doc-lap-2kwp.html'">
+      <div class="prod-img"><div class="prod-img-icon">🔋</div><span class="prod-badge badge-new">Mới</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Growatt</div>
+        <div class="prod-name">Hệ thống độc lập 2kWp</div>
+        <div class="prod-desc">Kèm bình ắc quy lưu trữ, dùng điện ban đêm, phù hợp vùng hay mất điện.</div>
+        <div class="prod-specs"><span class="spec">2kWp</span><span class="spec">Off-grid</span><span class="spec">Lưu trữ pin</span></div>
+        <div class="prod-footer"><div class="prod-price">38.000.000đ <span>/ hệ thống</span></div><a href="/#lien-he" class="btn-contact">Tư vấn</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-inverter-hybrid-5kw.html'">
+      <div class="prod-img"><div class="prod-img-icon">🌞</div><span class="prod-badge badge-pop">Tiết kiệm</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Sungrow</div>
+        <div class="prod-name">Inverter Hybrid 5kW</div>
+        <div class="prod-desc">Biến tần hybrid kết hợp hòa lưới và lưu trữ, hiệu suất 98.4%, bảo hành 10 năm.</div>
+        <div class="prod-specs"><span class="spec">5kW</span><span class="spec">Hybrid</span><span class="spec">BH 10 năm</span></div>
+        <div class="prod-footer"><div class="prod-price">18.500.000đ <span>/ bộ</span></div><a href="/#lien-he" class="btn-contact">Tư vấn</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="hoan-von">
+  <h3>☀️ Ví dụ tính toán hoàn vốn tại Hà Tĩnh</h3>
+  <div class="hv-grid">
+    <div class="hv-item"><div class="hv-num">5kWp</div><div class="hv-lbl">Công suất lắp đặt</div></div>
+    <div class="hv-item"><div class="hv-num">~550kWh</div><div class="hv-lbl">Sản xuất/tháng</div></div>
+    <div class="hv-item"><div class="hv-num">~1.800.000đ</div><div class="hv-lbl">Tiết kiệm/tháng</div></div>
+    <div class="hv-item"><div class="hv-num">~4.5 năm</div><div class="hv-lbl">Hoàn vốn</div></div>
+  </div>
+</div>
+
+<div class="note-box">
+  <svg viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+  <p>Giá trên đã bao gồm thiết bị và công lắp đặt. Thời gian hoàn vốn phụ thuộc vào mức tiêu thụ điện thực tế. Liên hệ để được khảo sát mái nhà và tính toán chính xác nhất. Bảo hành tấm pin <strong>25 năm hiệu suất</strong>, inverter <strong>10 năm</strong>.</p>
+</div>
+<div class="cta-section">
+  <h2>Sẵn sàng tiết kiệm điện ngay?</h2>
+  <p>Khảo sát mái nhà miễn phí — thiết kế hệ thống tối ưu — hoàn thiện trong 2-3 ngày</p>
+  <div class="cta-btns">
+    <a href="tel:0xxxxxxxxx" class="btn-cta-primary">📞 Gọi ngay: 0xx xxx xxxx</a>
+    <a href="/#lien-he" class="btn-cta-ghost">Đặt lịch khảo sát</a>
+  </div>
+</div>
+<footer>© 2025 <a href="/">VietSmart Tech</a> — Camera & Điện Thông Minh Hà Tĩnh</footer>
+</body>
+</html>
