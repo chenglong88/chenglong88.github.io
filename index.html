@@ -189,7 +189,17 @@ section{padding:78px 5%}
 .sec-desc{font-size:15px;color:var(--n600);max-width:530px;line-height:1.85}
 .sec-hdr{margin-bottom:50px}
 
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px}
+.svc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+@media (min-width: 768px) {
+  .svc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .svc-card{border-radius:18px;overflow:hidden;border:1px solid var(--n200);transition:all .25s;cursor:pointer}
 .svc-card:hover{transform:translateY(-5px);box-shadow:0 16px 44px rgba(220,38,38,.12)}
 .svc-hd{padding:28px 24px 20px;position:relative;overflow:hidden}
