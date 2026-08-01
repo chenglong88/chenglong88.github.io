@@ -42,7 +42,8 @@ nav{background:rgba(15,5,5,0.97);padding:0 5%;display:flex;align-items:center;ju
 
 /* PRODUCTS */
 .products{padding:32px 5% 60px;max-width:1200px;margin:0 auto}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.products-grid{display:grid;grid-template-columns:1fr;gap:20px}
+@media(min-width:768px){.products-grid{grid-template-columns:repeat(2,1fr)}}
 .prod-card{background:white;border-radius:16px;overflow:hidden;border:1px solid var(--n200);transition:all .25s;display:flex;flex-direction:column;cursor:pointer}
 .prod-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(220,38,38,.1)}
 .prod-img{height:180px;background:linear-gradient(135deg,#1A0808,#3B0000);display:flex;align-items:center;justify-content:center;position:relative}
