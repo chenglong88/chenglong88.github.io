@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tư Vấn Thiết Kế Điện (M&E) – VietSmart Tech Hà Tĩnh</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--r700:#B91C1C;--r600:#DC2626;--r100:#FEE2E2;--r50:#FFF5F5;--o500:#F97316;--o400:#FB923C;--o100:#FFEDD5;--g400:#F59E0B;--dk:#0F0505;--n900:#1C1917;--n600:#57534E;--n400:#A8A29E;--n200:#E7E5E4;--n100:#F5F5F4;}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--n900);background:var(--n100);line-height:1.7}
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif}
+nav{background:rgba(15,5,5,.97);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:99;border-bottom:1px solid rgba(220,38,38,.2)}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-ic{width:32px;height:32px;background:linear-gradient(135deg,var(--r600),var(--o500));border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo-ic svg{width:18px;height:18px;fill:white}
+.logo-txt{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;color:white}
+.logo-txt span{color:var(--o400)}
+.btn-home{display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--r600),var(--o500));color:white;padding:8px 18px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-home:hover{opacity:.85}
+.btn-home svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.hero{background:linear-gradient(135deg,var(--dk),#4C0519,#9F1239);padding:48px 5% 40px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.35);color:#FECACA;padding:4px 14px;border-radius:100px;font-size:12px;font-weight:500;margin-bottom:16px}
+.hero h1{font-size:clamp(24px,4vw,40px);font-weight:700;color:white;margin-bottom:12px;letter-spacing:-.5px}
+.hero p{font-size:15px;color:rgba(255,255,255,.65);max-width:500px;margin:0 auto}
+.filter-bar{padding:24px 5% 0;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.filter-btn{padding:7px 18px;border-radius:100px;border:1px solid var(--n200);background:white;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;color:#44403C}
+.filter-btn.active,.filter-btn:hover{background:var(--r600);color:white;border-color:var(--r600)}
+.products{padding:32px 5% 20px;max-width:1200px;margin:0 auto}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.prod-card{background:white;border-radius:16px;overflow:hidden;border:1px solid var(--n200);transition:all .25s;display:flex;flex-direction:column;cursor:pointer}
+.prod-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(220,38,38,.1)}
+.prod-img{height:180px;background:linear-gradient(135deg,#4C0519,#9F1239);display:flex;align-items:center;justify-content:center;position:relative}
+.prod-img-icon{font-size:64px;opacity:.9}
+.prod-badge{position:absolute;top:12px;left:12px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;font-family:'Inter',sans-serif}
+.badge-hot{background:#DC2626;color:white}
+.badge-new{background:#F97316;color:white}
+.badge-24h{background:#7C3AED;color:white}
+.prod-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.prod-brand{font-size:11px;font-weight:600;color:var(--r600);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.prod-name{font-size:15px;font-weight:700;color:var(--n900);margin-bottom:6px;font-family:'Plus Jakarta Sans',sans-serif}
+.prod-desc{font-size:13px;color:var(--n600);line-height:1.6;margin-bottom:12px}
+.prod-specs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;flex:1;align-content:flex-start}
+.spec{background:#F1F5F9;color:#475569;padding:2px 8px;border-radius:5px;font-size:10.5px;font-weight:500}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;padding-top:12px;border-top:1px solid var(--n200);margin-top:auto;gap:8px}
+.prod-price{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:#DC2626}
+.prod-price span{font-size:11px;font-weight:400;color:#94A3B8;margin-left:2px}
+.btn-contact{background:linear-gradient(135deg,var(--r600),var(--o500));color:white;padding:7px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-contact:hover{opacity:.85}
+.urgency-box{background:linear-gradient(135deg,#7F1D1D,#9F1239);border-radius:16px;padding:24px 28px;margin:0 5% 24px;max-width:1160px;margin-left:auto;margin-right:auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.urgency-box .urg-icon{font-size:36px}
+.urgency-box h3{color:white;font-size:16px;margin-bottom:4px}
+.urgency-box p{color:rgba(255,255,255,.7);font-size:13px}
+.urg-btn{background:white;color:var(--r700);padding:10px 22px;border-radius:8px;font-weight:600;font-size:14px;text-decoration:none;font-family:'Inter',sans-serif;white-space:nowrap;margin-left:auto}
+.note-box{background:#FFEDD5;border:1px solid #FB923C;border-radius:12px;padding:16px 20px;margin:0 5% 40px;max-width:1160px;margin-left:auto;margin-right:auto;display:flex;gap:12px;align-items:flex-start}
+.note-box svg{width:20px;height:20px;min-width:20px;stroke:#F97316;fill:none;stroke-width:2;stroke-linecap:round;margin-top:2px}
+.note-box p{font-size:13.5px;color:#92400E;line-height:1.65}
+.cta-section{background:linear-gradient(135deg,var(--dk),#4C0519);padding:48px 5%;text-align:center}
+.cta-section h2{font-size:clamp(20px,3vw,30px);color:white;margin-bottom:10px}
+.cta-section p{color:rgba(255,255,255,.6);font-size:14px;margin-bottom:24px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-cta-primary{background:linear-gradient(135deg,var(--r600),var(--o500));color:white;padding:12px 28px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;font-family:'Inter',sans-serif;transition:opacity .2s}
+.btn-cta-ghost{background:rgba(255,255,255,.1);color:white;padding:12px 28px;border-radius:10px;font-weight:600;font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,.2);font-family:'Inter',sans-serif}
+footer{background:#0F0505;color:rgba(255,255,255,.45);padding:20px 5%;text-align:center;font-size:13px}
+footer a{color:#FB923C;text-decoration:none}
+@media(max-width:600px){.products-grid{grid-template-columns:1fr}.prod-img{height:160px}.prod-footer{flex-direction:column;align-items:flex-start;gap:8px}.btn-contact{width:100%;text-align:center;padding:10px;display:block}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo"><div class="logo-ic"><svg viewBox="0 0 24 24"><path d="M12 2c0 0-6 5-6 10a6 6 0 0012 0c0-2-1.5-4-2.5-5.5C15 8 14 10 12 10c-1.5 0-2-1.5-1.5-3C9 8.5 8 10 8 12a4 4 0 008 0c0-3-1.5-5-4-10z"/></svg></div><span class="logo-txt">VietSmart<span>Tech</span></span></a>
+  <a href="/" class="btn-home"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>Trang chủ</a>
+</nav>
+<div class="hero">
+  <div class="hero-badge">💼 Tư vấn thiết kế điện (M&E)</div>
+  <h1>Tư Vấn Thiết Kế Điện (M&E)<br>Chuyên Nghiệp & Chuẩn Kỹ Thuật</h1>
+  <p>Thiết kế bản vẽ, tính toán tải điện, giám sát thi công cho công trình xây dựng — đúng tiêu chuẩn kỹ thuật</p>
+</div>
+
+<div class="urgency-box" style="margin-top:28px">
+  <div class="urg-icon">📐</div>
+  <div>
+    <h3>Chuẩn bị xây nhà, cần bản vẽ điện?</h3>
+    <p>Tư vấn thiết kế trước khi thi công — tránh phát sinh chi phí, đảm bảo an toàn lâu dài</p>
+  </div>
+  <a href="tel:0xxxxxxxxx" class="urg-btn">📞 Tư vấn: 0xx xxx xxxx</a>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active">Tất cả</button>
+  <button class="filter-btn">Thiết kế bản vẽ</button>
+  <button class="filter-btn">Tính toán tải điện</button>
+  <button class="filter-btn">Giám sát thi công</button>
+  <button class="filter-btn">Tư vấn tiết kiệm</button>
+</div>
+<div class="products">
+  <div class="products-grid">
+
+    <div class="prod-card" onclick="location.href='/sp-thiet-ke-ban-ve-dien.html'">
+      <div class="prod-img"><div class="prod-img-icon">📐</div><span class="prod-badge badge-hot">Phổ biến</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Dịch vụ</div>
+        <div class="prod-name">Thiết kế bản vẽ hệ thống điện</div>
+        <div class="prod-desc">Thiết kế sơ đồ điện tổng thể cho nhà ở, công trình — bố trí ổ cắm, công tắc, tủ điện hợp lý.</div>
+        <div class="prod-specs"><span class="spec">Bản vẽ CAD</span><span class="spec">Đúng tiêu chuẩn</span><span class="spec">Tư vấn miễn phí</span></div>
+        <div class="prod-footer"><div class="prod-price">1.500.000đ <span>/ công trình</span></div><a href="/#lien-he" class="btn-contact">Đặt lịch</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-tinh-toan-tai-dien.html'">
+      <div class="prod-img"><div class="prod-img-icon">📊</div><span class="prod-badge badge-24h">Chi tiết</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Dịch vụ</div>
+        <div class="prod-name">Tính toán tải điện công trình</div>
+        <div class="prod-desc">Tính toán công suất tiêu thụ, chọn dây dẫn, CB phù hợp — đảm bảo an toàn và tiết kiệm chi phí.</div>
+        <div class="prod-specs"><span class="spec">Tính công suất</span><span class="spec">Chọn dây phù hợp</span><span class="spec">An toàn</span></div>
+        <div class="prod-footer"><div class="prod-price">800.000đ <span>/ lần</span></div><a href="/#lien-he" class="btn-contact">Đặt lịch</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-giam-sat-thi-cong.html'">
+      <div class="prod-img"><div class="prod-img-icon">🏗️</div><span class="prod-badge badge-hot">Quan trọng</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Dịch vụ</div>
+        <div class="prod-name">Giám sát thi công theo bản vẽ</div>
+        <div class="prod-desc">Giám sát đội thi công thực hiện đúng bản vẽ thiết kế, nghiệm thu từng giai đoạn.</div>
+        <div class="prod-specs"><span class="spec">Theo dõi tiến độ</span><span class="spec">Nghiệm thu kỹ thuật</span><span class="spec">Đúng bản vẽ</span></div>
+        <div class="prod-footer"><div class="prod-price">Báo giá <span>theo công trình</span></div><a href="/#lien-he" class="btn-contact">Đặt lịch</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-tu-van-tiet-kiem-nang-luong.html'">
+      <div class="prod-img"><div class="prod-img-icon">💡</div><span class="prod-badge badge-new">Mới</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Dịch vụ</div>
+        <div class="prod-name">Tư vấn tiết kiệm năng lượng</div>
+        <div class="prod-desc">Đánh giá hệ thống điện hiện tại, đề xuất giải pháp tiết kiệm điện cho gia đình, doanh nghiệp.</div>
+        <div class="prod-specs"><span class="spec">Đánh giá hiện trạng</span><span class="spec">Giải pháp tối ưu</span><span class="spec">Tiết kiệm chi phí</span></div>
+        <div class="prod-footer"><div class="prod-price">500.000đ <span>/ lần</span></div><a href="/#lien-he" class="btn-contact">Đặt lịch</a></div>
+      </div>
+    </div>
+
+    <div class="prod-card" onclick="location.href='/sp-thiet-ke-tu-dien.html'">
+      <div class="prod-img"><div class="prod-img-icon">🗂️</div><span class="prod-badge badge-new">Chuyên sâu</span></div>
+      <div class="prod-body">
+        <div class="prod-brand">Dịch vụ</div>
+        <div class="prod-name">Thiết kế tủ điện công trình</div>
+        <div class="prod-desc">Thiết kế sơ đồ tủ điện, bố trí thiết bị bảo vệ hợp lý cho nhà ở và công trình vừa/nhỏ.</div>
+        <div class="prod-specs"><span class="spec">Sơ đồ chi tiết</span><span class="spec">Đúng tiêu chuẩn</span><span class="spec">Tối ưu chi phí</span></div>
+        <div class="prod-footer"><div class="prod-price">1.000.000đ <span>/ bản thiết kế</span></div><a href="/#lien-he" class="btn-contact">Đặt lịch</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="note-box">
+  <svg viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+  <p>Giá dịch vụ trên là giá tham khảo, chi phí thực tế phụ thuộc vào quy mô và độ phức tạp của công trình. Sẽ báo giá chi tiết sau khi khảo sát yêu cầu. Hỗ trợ tư vấn miễn phí <strong>lần đầu</strong>.</p>
+</div>
+<div class="cta-section">
+  <h2>Cần tư vấn thiết kế điện chuyên nghiệp tại Hà Tĩnh?</h2>
+  <p>Tư vấn miễn phí ban đầu — báo giá rõ ràng — thiết kế đúng tiêu chuẩn kỹ thuật</p>
+  <div class="cta-btns">
+    <a href="tel:0xxxxxxxxx" class="btn-cta-primary">📞 Gọi ngay: 0xx xxx xxxx</a>
+    <a href="/#lien-he" class="btn-cta-ghost">Đặt lịch tư vấn</a>
+  </div>
+</div>
+<footer>© 2025 <a href="/">VietSmart Tech</a> — Camera & Điện Thông Minh Hà Tĩnh</footer>
+</body>
+</html>
